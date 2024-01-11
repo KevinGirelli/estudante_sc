@@ -7,5 +7,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 public interface studentRepository extends JpaRepository<student,Long> {
-  UserDetails findByEmail(String login);
+  student findByEmail(String login);
 }

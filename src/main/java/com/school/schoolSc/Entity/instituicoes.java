@@ -1,8 +1,7 @@
 package com.school.schoolSc.Entity;
 
+import com.school.schoolSc.Entity.adresses.studentAdress;
 import jakarta.persistence.*;
-
-import java.util.UUID;
 
 @Entity
 public class instituicoes {
@@ -22,7 +21,7 @@ public class instituicoes {
     @Column(name = "phoneNumber",nullable = false)
     String phoneNumber;
     @ManyToOne
-    adress adress;
+    studentAdress adress;
 
     @Column(name = "StudentAmount",nullable = false)
     int studentAmount;

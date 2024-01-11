@@ -27,8 +27,8 @@ public class AuthorizationService implements UserDetailsService {
       return studentRepository.findByEmail(username);
     }else if(teacherRepository.findByEmail(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_TEACHER"))){
       return teacherRepository.findByEmail(username);
-    }else if (adminRepository.findByLogin(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))){
-      return adminRepository.findByLogin(username);
+    }else if (adminRepository.findBylogin(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))){
+      return adminRepository.findBylogin(username);
     }else{
       throw new UsernameNotFoundException("UsernameNotFound");
     }

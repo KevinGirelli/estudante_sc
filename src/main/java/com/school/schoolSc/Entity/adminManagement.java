@@ -16,7 +16,7 @@ public class adminManagement implements UserDetails {
   Long adminID;
 
   @Column(name = "adminLogin",nullable = false)
-  String adminLogin;
+  String login;
 
   @Column(name = "adminPassword", nullable = false)
   String adminPassword;
@@ -33,7 +33,7 @@ public class adminManagement implements UserDetails {
 
   @Override
   public String getUsername() {
-    return adminLogin;
+    return login;
   }
 
   @Override

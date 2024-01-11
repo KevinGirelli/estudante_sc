@@ -1,9 +1,9 @@
 package com.school.schoolSc.Entity;
 
 public enum roles {
-  student("STUDENT"),
-  teacher("TEACHER"),
-  admin("ADMIN");
+  STUDENT("STUDENT"),
+  TEACHER("TEACHER"),
+  ADMIN("ADMIN");
 
   private String role;
 

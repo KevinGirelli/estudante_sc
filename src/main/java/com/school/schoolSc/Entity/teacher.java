@@ -40,9 +40,9 @@ public class teacher implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    if(this.role == roles.student) return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
-    else if (this.role == roles.teacher) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
-    else if(this.role == roles.admin) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    if(this.role == roles.STUDENT) return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
+    else if (this.role == roles.TEACHER) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
+    else if(this.role == roles.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
     else{
       return null;
     }

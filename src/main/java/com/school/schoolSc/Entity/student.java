@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class student implements UserDetails {
@@ -22,14 +21,11 @@ public class student implements UserDetails {
     @Column(name = "password", nullable = false)
     String password;
 
-    @Column
+    @Column(nullable = true)
     private roles role;
 
-    @Column(name = "firstName", nullable = false)
-    String firstName;
-
-    @Column(name = "lastName", nullable = false)
-    String lastName;
+    @Column(name = "fullName", nullable = false)
+    String fullName;
 
     @Column(name = "cpf", nullable = false)
     String cpf;
@@ -49,15 +45,97 @@ public class student implements UserDetails {
     @Column(name = "parentCPF",nullable = false)
     String parentCPF;
 
-    @ManyToOne
-    adress adress;
+    public student(){}
 
+    public Long getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(Long studentID) {
+        this.studentID = studentID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public roles getRole() {
+        return role;
+    }
+
+    public void setRole(roles role) {
+        this.role = role;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getAge() {
+        return age;
+    }
+
+    public void setAge(Date age) {
+        this.age = age;
+    }
+
+    public String getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public String getParentPhoneNumber() {
+        return parentPhoneNumber;
+    }
+
+    public void setParentPhoneNumber(String parentPhoneNumber) {
+        this.parentPhoneNumber = parentPhoneNumber;
+    }
+
+    public String getParentCPF() {
+        return parentCPF;
+    }
+
+    public void setParentCPF(String parentCPF) {
+        this.parentCPF = parentCPF;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == roles.student) return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
-        else if (this.role == roles.teacher) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
-        else if(this.role == roles.admin) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        if(this.role == roles.STUDENT) return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
+        else if (this.role == roles.TEACHER) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
+        else if(this.role == roles.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
         else{
             return null;
         }
