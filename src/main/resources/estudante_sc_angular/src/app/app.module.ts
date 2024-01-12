@@ -28,8 +28,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     SignupAlunoComponent,
+    SignupProfessorComponent,
     SignupEscolaComponent,
-    SignupProfessorComponent
   ],
   imports: [
     BrowserModule,
