@@ -19,6 +19,13 @@ public class teacherAdress {
   @Column(name = "complement",nullable = false)
   String complement;
 
+  public com.school.schoolSc.Entity.teacher getTeacher() {
+    return teacher;
+  }
+
+  public void setTeacher(com.school.schoolSc.Entity.teacher teacher) {
+    this.teacher = teacher;
+  }
 
   @ManyToOne
   teacher teacher;

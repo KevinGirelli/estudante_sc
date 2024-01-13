@@ -3,6 +3,7 @@ package com.school.schoolSc.infra.security;
 import com.auth0.jwt.JWT;
 import com.school.schoolSc.Entity.student;
 import com.school.schoolSc.Entity.teacher;
+import com.school.schoolSc.repository.schoolRepository;
 import com.school.schoolSc.repository.studentRepository;
 import com.school.schoolSc.repository.teacherRepository;
 import jakarta.servlet.FilterChain;
@@ -32,6 +33,9 @@ public class securityFilter extends OncePerRequestFilter {
   @Autowired
   teacherRepository teacherRepository;
 
+  @Autowired
+  schoolRepository schoolRepository;
+
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -42,6 +46,7 @@ public class securityFilter extends OncePerRequestFilter {
 
         UserDetails newStudent = studentRepository.findByEmail(validate);
         UserDetails newTeacher = teacherRepository.findByEmail(validate);
+        UserDetails newSchool = schoolRepository.findByEmail(validate);
 
         if(newStudent != null){
           Authentication authentication = new UsernamePasswordAuthenticationToken(newStudent,null, newStudent.getAuthorities());

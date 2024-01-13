@@ -3,7 +3,8 @@ package com.school.schoolSc.Entity;
 public enum roles {
   STUDENT("STUDENT"),
   TEACHER("TEACHER"),
-  ADMIN("ADMIN");
+  ADMIN("ADMIN"),
+  SCHOOL_ADMIN("SCHOOL_ADMIN");
 
   private String role;
 

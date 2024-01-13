@@ -25,9 +25,11 @@ public class SecurityConfiguration {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                    .requestMatchers(HttpMethod.POST,"/register-submit").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/login-submit").permitAll()
-                    .requestMatchers(HttpMethod.GET,"/student").hasAnyRole("ADMIN")
+                    .requestMatchers(HttpMethod.POST,"/student/register-submit").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/student/login-submit").permitAll()
+                    .requestMatchers(HttpMethod.GET,"/studentHome").hasAnyRole("ADMIN")
+                    .requestMatchers(HttpMethod.POST, "/teacher/register-submit").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/teacher/login-submit").permitAll()
                     .anyRequest().authenticated())
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
             .build();

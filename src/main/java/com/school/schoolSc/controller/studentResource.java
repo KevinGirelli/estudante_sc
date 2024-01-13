@@ -2,12 +2,10 @@ package com.school.schoolSc.controller;
 
 import com.school.schoolSc.Entity.adresses.studentAdress;
 import com.school.schoolSc.Entity.dto.studentLoginDTO;
-import com.school.schoolSc.Entity.roles;
 import com.school.schoolSc.Entity.student;
 import com.school.schoolSc.infra.security.TokenService;
-import com.school.schoolSc.repository.StudentAdressRepository;
+import com.school.schoolSc.repository.adressRepository.StudentAdressRepository;
 import com.school.schoolSc.repository.studentRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/student")
 public class studentResource {
 
   @Autowired
@@ -37,7 +36,7 @@ public class studentResource {
   //tipo ModelAndView e instanciar um objeto dessa classe e passar o nome do arquivo html
   //os arquivos html tem q ser guardados em resources/templates
   //lembrando que a classe resource tem que usar a anotação @Controller e não @RestController
-  @GetMapping("/student")
+  @GetMapping("/studentHome")
   public ModelAndView register (){
     ModelAndView mv = new ModelAndView("home");
     return mv;
@@ -68,7 +67,7 @@ public class studentResource {
       String token = tokenService.GenerateToken(userToLogin);
       return ResponseEntity.ok().body(token);
     }else{
-      return ResponseEntity.badRequest().body("student not found or credentilas invalid");
+      return ResponseEntity.badRequest().body("student not found or credentials invalid");
     }
 
   }

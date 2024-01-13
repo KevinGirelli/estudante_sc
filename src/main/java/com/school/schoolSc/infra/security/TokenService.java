@@ -1,6 +1,7 @@
 package com.school.schoolSc.infra.security;
 
 import com.auth0.jwt.algorithms.Algorithm;
+import com.school.schoolSc.Entity.schools;
 import com.school.schoolSc.Entity.student;
 import com.school.schoolSc.Entity.teacher;
 import com.school.schoolSc.repository.studentRepository;
@@ -41,6 +42,16 @@ public class TokenService {
     String token = JWT.create()
             .withIssuer("estudanteSC")
             .withSubject(teacher.getUsername())
+            .withExpiresAt(genExpirationDate())
+            .sign(algorithm);
+    return token;
+  }
+
+  public String GenerateToken(schools school){
+    Algorithm algorithm = Algorithm.HMAC256(secret);
+    String token = JWT.create()
+            .withIssuer("estudanteSC")
+            .withSubject(school.getUsername())
             .withExpiresAt(genExpirationDate())
             .sign(algorithm);
     return token;

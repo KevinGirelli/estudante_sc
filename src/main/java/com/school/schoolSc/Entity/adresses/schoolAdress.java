@@ -1,16 +1,19 @@
 package com.school.schoolSc.Entity.adresses;
 
-import com.school.schoolSc.Entity.student;
+import com.school.schoolSc.Entity.schools;
 import jakarta.persistence.*;
 
 @Entity
-public class instituicaoAdress {
+public class schoolAdress {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long adressID;
 
   @Column(name = "zipcode",nullable = false)
   String zipCode;
+
+  @ManyToOne
+  schools school;
 
   public Long getAdressID() {
     return adressID;
@@ -29,21 +32,14 @@ public class instituicaoAdress {
     this.zipCode = zipCode;
   }
 
-  public String getNeighborhood() {
-    return neighborhood;
+  public schools getSchool() {
+    return school;
   }
 
-  public void setNeighborhood(String neighborhood) {
-    this.neighborhood = neighborhood;
+  public void setSchool(schools school) {
+    this.school = school;
   }
 
-  public com.school.schoolSc.Entity.student getStudent() {
-    return student;
-  }
-
-  public void setStudent(com.school.schoolSc.Entity.student student) {
-    this.student = student;
-  }
 
   public String getCity() {
     return city;
@@ -61,11 +57,6 @@ public class instituicaoAdress {
     this.state = state;
   }
 
-  @Column(name = "neighborhood",nullable = false)
-  String neighborhood;
-
-  @ManyToOne
-  com.school.schoolSc.Entity.student student;
 
   @Column(name = "city",nullable = false)
   String city;
