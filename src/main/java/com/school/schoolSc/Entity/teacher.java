@@ -25,11 +25,60 @@ public class teacher implements UserDetails {
   @Column
   private roles role;
 
-  @Column(name = "firstName",nullable = false)
-  String firstName;
+  @Column(name = "fullName",nullable = false)
+  String fullName;
 
-  @Column(name = "lastName",nullable = false)
-  String lastName;
+  public Long getTeacherID() {
+    return teacherID;
+  }
+
+  public void setTeacherID(Long teacherID) {
+    this.teacherID = teacherID;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public roles getRole() {
+    return role;
+  }
+
+  public void setRole(roles role) {
+    this.role = role;
+  }
+
+  public String getFullName() {
+    return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
+
+  public String getCpf() {
+    return cpf;
+  }
+
+  public void setCpf(String cpf) {
+    this.cpf = cpf;
+  }
+
+  public Date getAge() {
+    return age;
+  }
+
+  public void setAge(Date age) {
+    this.age = age;
+  }
 
   @Column(name = "cpf",nullable = false)
   String cpf;
@@ -40,9 +89,7 @@ public class teacher implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    if(this.role == roles.student) return List.of(new SimpleGrantedAuthority("ROLE_STUDENT"));
-    else if (this.role == roles.teacher) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
-    else if(this.role == roles.admin) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    if(this.role == roles.STUDENT) return List.of(new SimpleGrantedAuthority("ROLE_TEACHER"));
     else{
       return null;
     }

@@ -1,0 +1,161 @@
+<body style="background-color: #f5f5f5;">
+  <div class="bg">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+      <div class="parent">
+        <div class="child">
+          <div nz-row class="imgDiv">
+            <div nz-col nzSpan="24">
+              <h1 style="margin-left: 45px;">Cadastro Aluno</h1>
+            </div>
+          </div>
+          <form nz-form [formGroup]="signupForm">
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Name">
+                <input nz-input placeholder="Nome" id="nome" formControlName="nome">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>   
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid E-mail">
+                <input nz-input placeholder="E-mail" id="email" formControlName="email">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Cpf">
+                <input nz-input placeholder="Cpf" id="cpf" formControlName="cpf">
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Date">
+                <input nz-input type="date" id="dataNasc" ngModel="selectedDate" formControlName="dataNasc">       
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Password">
+                <input nz-input type="password" placeholder="Senha" id="password" formControlName="password">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <div nz-col nzSpan="24">
+              <h1 style="margin-left: 60px;">Responsável</h1>
+            </div>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Father's Name">
+                <input nz-input placeholder="Nome do Responsável" id="nomePai" formControlName="nomePai">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Father's Cpf">
+                <input nz-input placeholder="Cpf do Responsável" id="cpfPai" formControlName="cpfPai">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Father's Phone">
+                <input nz-input placeholder="Telefone do Responsável" id="phonePai" formControlName="phonePai">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <div nz-col nzSpan="18">
+              <h1 style="margin-left: 80px;">Endereço</h1>
+            </div>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid State">
+                  <input nz-input placeholder="Estado" id="estado" formControlName="estado">
+                  <ng-template #errorPass let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Is Required
+                    </ng-container>
+                  </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid City">
+                <input nz-input placeholder="Cidade" id="cidade" formControlName="cidade">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Cep">
+                <input nz-input placeholder="Cep" id="cep" formControlName="cep">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Number">
+                <input nz-input placeholder="Número" id="numeroResidencial" formControlName="numeroResidencial">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+            
+            <nz-form-item>
+              <nz-form-control>
+                <input nz-input placeholder="Complemento" id="complemento" formControlName="complemento">
+              </nz-form-control>
+            </nz-form-item>
+  
+            <button nz-button class="signup-form-button login-form-margin" [nzType]="'primary'"
+             (click)="register()" [disabled]="signupForm.invalid">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+    </nz-spin>
+  </div>
+  
+</body>

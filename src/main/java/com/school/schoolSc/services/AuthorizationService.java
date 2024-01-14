@@ -1,6 +1,6 @@
 package com.school.schoolSc.services;
 
-import com.school.schoolSc.repository.adminRepository;
+import com.school.schoolSc.repository.schoolRepository;
 import com.school.schoolSc.repository.studentRepository;
 import com.school.schoolSc.repository.teacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,15 @@ public class AuthorizationService implements UserDetailsService {
   teacherRepository teacherRepository;
 
   @Autowired
-  adminRepository adminRepository;
+  schoolRepository schoolRepository;
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     if(studentRepository.findByEmail(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_STUDENT"))){
       return studentRepository.findByEmail(username);
     }else if(teacherRepository.findByEmail(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_TEACHER"))){
       return teacherRepository.findByEmail(username);
-    }else if (adminRepository.findByLogin(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))){
-      return adminRepository.findByLogin(username);
+    }else if (schoolRepository.findByEmail(username).getAuthorities() == List.of(new SimpleGrantedAuthority("ROLE_SCHOOLADMIN"))){
+      return schoolRepository.findByEmail(username);
     }else{
       throw new UsernameNotFoundException("UsernameNotFound");
     }
