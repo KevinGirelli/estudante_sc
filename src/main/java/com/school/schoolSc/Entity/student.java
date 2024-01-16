@@ -33,6 +33,12 @@ public class student implements UserDetails {
     @Column(name = "age",nullable = false)
     Date age;
 
+<<<<<<< HEAD
+=======
+    @Column(name = "registration", nullable = false)
+    String registration;
+
+>>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     @Column(name = "parentName",nullable = false)
     String parentName;
 
@@ -42,6 +48,7 @@ public class student implements UserDetails {
     @Column(name = "parentCPF",nullable = false)
     String parentCPF;
 
+<<<<<<< HEAD
     @Column(name = "zipcode",nullable = false)
     String zipCode;
 
@@ -113,6 +120,8 @@ public class student implements UserDetails {
     }
 
 
+=======
+>>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     public student(){}
 
     public Long getStudentID() {
@@ -167,6 +176,16 @@ public class student implements UserDetails {
         this.age = age;
     }
 
+<<<<<<< HEAD
+=======
+    public String getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
+>>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
 
     public String getParentName() {
         return parentName;

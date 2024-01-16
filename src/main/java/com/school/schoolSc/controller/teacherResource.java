@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class teacherResource {
 
   @Autowired
-  teacherAdressRepository teacherAdressRepository;
-  @Autowired
   teacherRepository teacherRepository;
 
   @Autowired
@@ -49,15 +47,9 @@ public class teacherResource {
       return ResponseEntity.internalServerError().build();
   }
   @PostMapping("/register-submit")
-  public ResponseEntity teacherRegister(@RequestBody teacherAdress data){
+  public ResponseEntity teacherRegister(@RequestBody teacher data){
     //insert do professor
-      teacher newTeacher = data.getTeacher();
-      newTeacher.setPassword(passwordEncoder.encode(newTeacher.getPassword()));
-      this.teacherRepository.save(newTeacher);
-
-      //insert do endereço
-      data.setTeacher(teacherRepository.findByEmail(newTeacher.getEmail()));
-      this.teacherAdressRepository.save(data);
-      return ResponseEntity.ok().build();
+      data.setPassword(passwordEncoder.encode(data.getPassword()));
+      this.teacherRepository.save(data);git push
   }
 }

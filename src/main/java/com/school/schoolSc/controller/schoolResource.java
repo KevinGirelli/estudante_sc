@@ -21,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class schoolResource {
 
   @Autowired
-  schoolAdressRepository schoolAdressRepository;
-
-  @Autowired
   schoolRepository schoolRepository;
 
   @Autowired
