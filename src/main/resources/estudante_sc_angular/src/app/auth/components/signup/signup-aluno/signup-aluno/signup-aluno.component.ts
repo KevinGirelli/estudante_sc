@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 
 @Component({
   selector: 'app-signup-aluno',
@@ -12,7 +13,7 @@ export class SignupAlunoComponent {
   signupForm!: FormGroup;
   selectedDate: string = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -37,5 +38,8 @@ export class SignupAlunoComponent {
 
   register() {
     console.log(this.signupForm.value);
+    this.authService.registerAluno(this.signupForm.value).subscribe((res) => {
+      console.log(res);
+    })
   }
 }
