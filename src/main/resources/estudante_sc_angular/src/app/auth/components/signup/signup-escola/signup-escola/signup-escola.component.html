@@ -1,1 +1,97 @@
-<p>signup-escola works!</p>
+<body style="background-color: #f5f5f5;">
+  <div class="bg">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+      <div class="parent">
+        <div class="child">
+          <div nz-row class="imgDiv">
+            <div nz-col nzSpan="24">
+              <h1 style="margin-left: 20px;">Cadastro Escola</h1>
+            </div>
+          </div>
+          <form nz-form [formGroup]="signupForm">
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Name">
+                <input nz-input placeholder="Nome da Escola" id="schoolName" formControlName="schoolName">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>   
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid E-mail">
+                <input nz-input placeholder="E-mail" id="email" formControlName="email" />
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Password">
+                <input nz-input type="password" placeholder="Senha" id="password" formControlName="password">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid State">
+                  <input nz-input placeholder="Número de Telefone" id="phoneNumber" formControlName="phoneNumber">
+                  <ng-template #errorPass let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                      Is Required
+                    </ng-container>
+                  </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid City">
+                <input nz-input placeholder="Nome do Diretor" id="directorsName" formControlName="directorsName">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Cep">
+                <input nz-input placeholder="Cpf do Diretor" id="directorsCpf" formControlName="directorsCpf">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Number">
+                <input nz-input placeholder="Telefone do Diretor" id="directorsPhoneNumber" formControlName="directorsPhoneNumber">
+                <ng-template #errorPass let-control>
+                  <ng-container *ngIf="control.hasError('required')">
+                    Is Required
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <button nz-button class="signup-form-button login-form-margin" [nzType]="'primary'"
+             (click)="register()" [disabled]="signupForm.invalid">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+    </nz-spin>
+  </div>
+  
+</body>

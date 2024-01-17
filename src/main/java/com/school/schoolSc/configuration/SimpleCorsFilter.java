@@ -15,7 +15,6 @@ import java.util.Map;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class SimpleCorsFilter implements Filter {
 
-<<<<<<< HEAD
   @Override
   public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
     HttpServletResponse response = (HttpServletResponse) res;
@@ -43,7 +42,6 @@ public class SimpleCorsFilter implements Filter {
   public void destroy() {
   }
 }
-=======
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
@@ -70,4 +68,3 @@ public class SimpleCorsFilter implements Filter {
     public void destroy() {
     }
 }
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
