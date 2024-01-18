@@ -1,10 +1,8 @@
 package com.school.schoolSc.controller;
 
-import com.school.schoolSc.Entity.adresses.schoolAdress;
 import com.school.schoolSc.Entity.dto.schoolLoginDTO;
 import com.school.schoolSc.Entity.schools;
 import com.school.schoolSc.infra.security.TokenService;
-import com.school.schoolSc.repository.adressRepository.schoolAdressRepository;
 import com.school.schoolSc.repository.schoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +28,7 @@ public class schoolResource {
   TokenService tokenService;
 
   @PostMapping("/register-submit")
-  public ResponseEntity registerSchool(schoolAdress newSchool){
-    schools school = newSchool.getSchool();
-    school.setSchoolPassword(passwordEncoder.encode(school.getPassword()));
-    this.schoolRepository.save(school);
-
-    newSchool.setSchool(this.schoolRepository.findByEmail(school.getUsername()));
-    this.schoolAdressRepository.save(newSchool);
-
+  public ResponseEntity registerSchool(schools newSchool){
     return ResponseEntity.ok().build();
   }
 

@@ -1,9 +1,5 @@
 package com.school.schoolSc.Entity;
 
-<<<<<<< HEAD
-=======
-import com.school.schoolSc.Entity.adresses.studentAdress;
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,20 +18,16 @@ public class schools implements UserDetails {
     String schoolName;
 
     @Column(nullable = false)
-<<<<<<< HEAD
     String email;
 
     @Column(nullable = false)
     String password;
-=======
-    String schoolEmail;
-
-    @Column(nullable = false)
-    String schoolPassword;
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
 
     @Column(name = "phoneNumber",nullable = false)
     String phoneNumber;
+
+    @Column(name = "zipCode")
+    String zipCode;
 
     @Column(name = "directorsName", nullable = false)
     String directorsName;
@@ -45,9 +37,6 @@ public class schools implements UserDetails {
 
     @Column(name = "directorsPhoneNumber", nullable = false)
     String directorsPhoneNumber;
-
-    @Column
-    roles role;
 
     public Long getSchoolID() {
         return schoolID;
@@ -65,36 +54,16 @@ public class schools implements UserDetails {
         this.schoolName = schoolName;
     }
 
-    public String getSchoolEmail() {
-<<<<<<< HEAD
+    public String getEmail() {
         return email;
     }
 
-    public void setSchoolEmail(String schoolEmail) {
-        this.email = schoolEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSchoolPassword() {
-        return password;
-    }
-
-    public void setSchoolPassword(String schoolPassword) {
-        this.password = schoolPassword;
-=======
-        return schoolEmail;
-    }
-
-    public void setSchoolEmail(String schoolEmail) {
-        this.schoolEmail = schoolEmail;
-    }
-
-    public String getSchoolPassword() {
-        return schoolPassword;
-    }
-
-    public void setSchoolPassword(String schoolPassword) {
-        this.schoolPassword = schoolPassword;
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhoneNumber() {
@@ -103,6 +72,14 @@ public class schools implements UserDetails {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getDirectorsName() {
@@ -137,17 +114,6 @@ public class schools implements UserDetails {
         this.role = role;
     }
 
-<<<<<<< HEAD
-=======
-    public studentAdress getAdress() {
-        return adress;
-    }
-
-    public void setAdress(studentAdress adress) {
-        this.adress = adress;
-    }
-
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     public int getStudentAmount() {
         return studentAmount;
     }
@@ -164,12 +130,9 @@ public class schools implements UserDetails {
         this.teacherAmount = teacherAmount;
     }
 
-<<<<<<< HEAD
-=======
-    @ManyToOne
-    studentAdress adress;
+    @Column
+    roles role;
 
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     @Column(name = "StudentAmount",nullable = false)
     int studentAmount;
 
@@ -187,20 +150,12 @@ public class schools implements UserDetails {
 
     @Override
     public String getPassword() {
-<<<<<<< HEAD
         return password;
-=======
-        return schoolPassword;
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     }
 
     @Override
     public String getUsername() {
-<<<<<<< HEAD
         return email;
-=======
-        return schoolEmail;
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     }
 
     @Override

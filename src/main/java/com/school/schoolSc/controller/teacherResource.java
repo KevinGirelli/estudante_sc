@@ -1,10 +1,9 @@
 package com.school.schoolSc.controller;
 
-import com.school.schoolSc.Entity.adresses.teacherAdress;
+
 import com.school.schoolSc.Entity.dto.teacherLoginDTO;
 import com.school.schoolSc.Entity.teacher;
 import com.school.schoolSc.infra.security.TokenService;
-import com.school.schoolSc.repository.adressRepository.teacherAdressRepository;
 import com.school.schoolSc.repository.teacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +49,7 @@ public class teacherResource {
   public ResponseEntity teacherRegister(@RequestBody teacher data){
     //insert do professor
       data.setPassword(passwordEncoder.encode(data.getPassword()));
-      this.teacherRepository.save(data);git push
+      this.teacherRepository.save(data);
+      return ResponseEntity.ok().build();
   }
 }

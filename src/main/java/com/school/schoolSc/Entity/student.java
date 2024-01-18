@@ -33,12 +33,9 @@ public class student implements UserDetails {
     @Column(name = "age",nullable = false)
     Date age;
 
-<<<<<<< HEAD
-=======
     @Column(name = "registration", nullable = false)
     String registration;
 
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     @Column(name = "parentName",nullable = false)
     String parentName;
 
@@ -48,7 +45,6 @@ public class student implements UserDetails {
     @Column(name = "parentCPF",nullable = false)
     String parentCPF;
 
-<<<<<<< HEAD
     @Column(name = "zipcode",nullable = false)
     String zipCode;
 
@@ -58,15 +54,11 @@ public class student implements UserDetails {
     @Column(name = "complement",nullable = false)
     String complement;
 
-    @ManyToOne
-    student student;
-
     @Column(name = "city",nullable = false)
     String city;
 
     @Column(name = "state",nullable = false)
     String state;
-
 
 
     public String getZipCode() {
@@ -107,21 +99,10 @@ public class student implements UserDetails {
         return state;
     }
 
-    public com.school.schoolSc.Entity.student getStudent() {
-        return student;
-    }
-
-    public void setStudent(com.school.schoolSc.Entity.student student) {
-        this.student = student;
-    }
-
     public void setState(String state) {
         this.state = state;
     }
 
-
-=======
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     public student(){}
 
     public Long getStudentID() {
@@ -176,8 +157,6 @@ public class student implements UserDetails {
         this.age = age;
     }
 
-<<<<<<< HEAD
-=======
     public String getRegistration() {
         return registration;
     }
@@ -185,7 +164,6 @@ public class student implements UserDetails {
     public void setRegistration(String registration) {
         this.registration = registration;
     }
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
 
     public String getParentName() {
         return parentName;
