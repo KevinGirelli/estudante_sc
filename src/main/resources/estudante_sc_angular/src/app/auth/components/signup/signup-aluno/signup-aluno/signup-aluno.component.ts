@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import { HttpClient, HttpContext } from '@angular/common/http';
-=======
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,18 +16,13 @@ export class SignupAlunoComponent implements OnInit {
   signupForm!: FormGroup;
   selectedDate: string = '';
 
-<<<<<<< HEAD
   constructor(private fb: FormBuilder,
-=======
-  constructor(private fb: FormBuilder, 
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
-              private authService: AuthService,
-              private message: NzMessageService,
-              private router: Router) {}
+    private authService: AuthService,
+    private message: NzMessageService,
+    private router: Router) {}
 
   ngOnInit() {
     this.signupForm = this.fb.group({
-<<<<<<< HEAD
       state: [null, [Validators.required]],
       city: [null, [Validators.required]],
       zipCode: [null, [Validators.required]],
@@ -46,36 +38,14 @@ export class SignupAlunoComponent implements OnInit {
       parentCPF: [null, [Validators.required]],
       parentPhoneNumber: [null, [Validators.required]],
       
-=======
-      nome: [null, [Validators.required]],
-      email: [null, [Validators.required]],
-      cpf: [null, [Validators.required]],
-      dataNasc: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      // Responsável
-      nomePai: [null, [Validators.required]],
-      cpfPai: [null, [Validators.required]],
-      phonePai: [null, [Validators.required]],
-      // Endereço
-      estado: [null, [Validators.required]],
-      cidade: [null, [Validators.required]],
-      cep: [null, [Validators.required]],
-      numeroResidencial: [null, [Validators.required]],
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
     });
   }
 
   register() {
     console.log(this.signupForm.value);
-<<<<<<< HEAD
     this.authService.registerAluno(JSON.stringify(this.signupForm.value)).subscribe((res) => {
       console.log(res);
       if (res != null) {
-=======
-    this.authService.registerAluno(this.signupForm.value).subscribe((res) => {
-      console.log(res);
-      if (res.id != null) {
->>>>>>> 5bba13220c6deae1b38058f25b7fa76a121763be
         this.message.success("Signup successful", { nzDuration: 5000 });
         this.router.navigateByUrl("/login");
       } else {
