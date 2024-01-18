@@ -23,13 +23,20 @@ export class AuthService {
     const httpOptions = {headers: new HttpHeaders({
       "Content-type": "application/json"
     })}
-    return this.http.post(BASE_URL+"/student/register-submit", signupProfessorRequest, httpOptions);
+    return this.http.post(BASE_URL+"professor url", signupProfessorRequest, httpOptions);
   }
 
   registerEscola(signupEscolaRequest: any): Observable<any> {
     const httpOptions = {headers: new HttpHeaders({
       "Content-type": "application/json"
     })}
-    return this.http.post(BASE_URL+"/student/register-submit", signupEscolaRequest, httpOptions);
+    return this.http.post(BASE_URL+"escola url", signupEscolaRequest, httpOptions);
+  }
+
+  login(loginRequest: any): Observable<any> {
+    const httpOptions = {headers: new HttpHeaders({
+      "Content-type": "application/json"
+    })}
+    return this.http.post(BASE_URL+"login url", loginRequest, httpOptions);
   }
 }

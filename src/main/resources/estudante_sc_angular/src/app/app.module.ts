@@ -20,6 +20,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { SignupAlunoComponent } from './auth/components/signup/signup-aluno/signup-aluno/signup-aluno.component';
 import { SignupEscolaComponent } from './auth/components/signup/signup-escola/signup-escola/signup-escola.component';
 import { SignupProfessorComponent } from './auth/components/signup/signup-professor/signup-professor/signup-professor.component'
+import { LoginComponent } from './auth/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(en);
@@ -30,6 +31,7 @@ registerLocaleData(en);
     SignupAlunoComponent,
     SignupProfessorComponent,
     SignupEscolaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
