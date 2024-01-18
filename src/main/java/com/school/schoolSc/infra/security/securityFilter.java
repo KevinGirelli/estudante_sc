@@ -1,11 +1,9 @@
 package com.school.schoolSc.infra.security;
 
-import com.auth0.jwt.JWT;
-import com.school.schoolSc.Entity.student;
-import com.school.schoolSc.Entity.teacher;
 import com.school.schoolSc.repository.schoolRepository;
 import com.school.schoolSc.repository.studentRepository;
 import com.school.schoolSc.repository.teacherRepository;
+import com.school.schoolSc.services.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,13 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 
 @Component
 public class securityFilter extends OncePerRequestFilter {

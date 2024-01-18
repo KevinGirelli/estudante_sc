@@ -1,8 +1,7 @@
 package com.school.schoolSc.controller;
 
-import com.school.schoolSc.Entity.dto.schoolLoginDTO;
 import com.school.schoolSc.Entity.schools;
-import com.school.schoolSc.infra.security.TokenService;
+import com.school.schoolSc.services.TokenService;
 import com.school.schoolSc.repository.schoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,20 +31,4 @@ public class schoolResource {
     return ResponseEntity.ok().build();
   }
 
-  @PostMapping
-  public ResponseEntity loginSchool(schoolLoginDTO schoolData){
-    schools schoolToLogin = this.schoolRepository.findByEmail(schoolData.email());
-    if(schoolToLogin != null){
-      if(passwordEncoder.matches(schoolData.password(),schoolToLogin.getPassword())){
-        Authentication authentication = new UsernamePasswordAuthenticationToken(schoolToLogin.getUsername(),schoolToLogin.getPassword(),schoolToLogin.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        return ResponseEntity.ok().body(tokenService.GenerateToken(schoolToLogin));
-      }else{
-        return ResponseEntity.badRequest().body("password invalid");
-      }
-    }else{
-      return ResponseEntity.badRequest().body("School not found or credentials invalid");
-    }
-  }
 }

@@ -1,17 +1,10 @@
 package com.school.schoolSc.controller;
 
-import com.school.schoolSc.Entity.dto.studentLoginDTO;
 import com.school.schoolSc.Entity.student;
-import com.school.schoolSc.infra.security.TokenService;
-import com.school.schoolSc.Entity.dto.studentLoginDTO;
-import com.school.schoolSc.Entity.student;
-import com.school.schoolSc.infra.security.TokenService;
+import com.school.schoolSc.services.TokenService;
 import com.school.schoolSc.repository.studentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -48,21 +41,6 @@ public class studentResource {
     data.setPassword(passwordEncoder.encode(data.getPassword()));
     studentRepository.save(data);
     return ResponseEntity.ok().build();
-
-  }
-
-  @PostMapping("/login-submit")
-  public ResponseEntity<String> loginSubmit(@RequestBody studentLoginDTO data){
-    student userToLogin = studentRepository.findByEmail(data.email());
-    if(userToLogin != null){
-      Authentication authentication = new UsernamePasswordAuthenticationToken(userToLogin.getUsername(),userToLogin.getPassword(),userToLogin.getAuthorities());
-      SecurityContextHolder.getContext().setAuthentication(authentication);
-
-      String token = tokenService.GenerateToken(userToLogin);
-      return ResponseEntity.ok().body(token);
-    }else{
-      return ResponseEntity.badRequest().body("student not found or credentials invalid");
-    }
 
   }
 }

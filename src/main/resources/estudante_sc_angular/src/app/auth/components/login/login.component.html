@@ -10,14 +10,14 @@
           </div>
           <form nz-form [formGroup]="loginForm">
 
-            <nz-form-item>   
+            <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback>
                 <nz-input-group nzPrefixIcon="user">
-                  <input nz-input placeholder="Matricula" id="matricula" formControlName="matricula" />
+                  <input nz-input placeholder="E-mail" id="email" formControlName="email" />
                 </nz-input-group>
               </nz-form-control>
             </nz-form-item>
-  
+
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Password">
                 <nz-input-group nzPrefixIcon="lock">
@@ -25,7 +25,7 @@
                 </nz-input-group>
               </nz-form-control>
             </nz-form-item>
-  
+
             <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
              (click)="login()" [disabled]="loginForm.invalid">Login</button>
           </form>

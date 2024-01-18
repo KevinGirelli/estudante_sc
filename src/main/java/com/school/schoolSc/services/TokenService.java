@@ -1,4 +1,4 @@
-package com.school.schoolSc.infra.security;
+package com.school.schoolSc.services;
 
 import com.auth0.jwt.algorithms.Algorithm;
 import com.school.schoolSc.Entity.schools;

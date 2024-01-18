@@ -26,10 +26,9 @@ public class SecurityConfiguration {
             .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.POST,"/student/register-submit").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/student/login-submit").permitAll()
                     .requestMatchers(HttpMethod.GET,"/studentHome").hasAnyRole("ADMIN")
                     .requestMatchers(HttpMethod.POST, "/teacher/register-submit").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/teacher/login-submit").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/login/login-submit").permitAll()
                     .anyRequest().authenticated())
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
             .build();

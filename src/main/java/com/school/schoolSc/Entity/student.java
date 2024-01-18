@@ -33,9 +33,6 @@ public class student implements UserDetails {
     @Column(name = "age",nullable = false)
     Date age;
 
-    @Column(name = "registration", nullable = false)
-    String registration;
-
     @Column(name = "parentName",nullable = false)
     String parentName;
 
@@ -155,14 +152,6 @@ public class student implements UserDetails {
 
     public void setAge(Date age) {
         this.age = age;
-    }
-
-    public String getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(String registration) {
-        this.registration = registration;
     }
 
     public String getParentName() {
