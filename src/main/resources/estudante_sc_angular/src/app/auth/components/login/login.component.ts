@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -50,6 +51,7 @@ export class LoginComponent {
             this.message.error("Bad credentials", { nzDuration: 5000 });
           }
         }
+        console.log(JSON.parse(res));
     });
   }
 }

@@ -41,6 +41,5 @@ public class studentResource {
     data.setPassword(passwordEncoder.encode(data.getPassword()));
     studentRepository.save(data);
     return ResponseEntity.ok().build();
-
   }
 }
