@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { Observable } from "rxjs";
 
 const BASE_URL = ["http://localhost:8080"];
@@ -33,10 +34,11 @@ export class AuthService {
     return this.http.post(BASE_URL+"escola url", signupEscolaRequest, httpOptions);
   }
 
-  login(loginRequest: any): Observable<any> {
+  login(loginRequest: String): Observable<any> {
     const httpOptions = {headers: new HttpHeaders({
       "Content-type": "application/json"
     })}
+
     return this.http.post(BASE_URL+"/login/login-submit", loginRequest, httpOptions);
   }
 }

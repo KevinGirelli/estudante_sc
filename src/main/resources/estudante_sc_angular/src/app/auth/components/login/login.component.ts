@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -28,7 +29,7 @@ export class LoginComponent {
     login(){
       console.log(this.loginForm.value);
       this.authService.login(JSON.stringify(this.loginForm.value)).subscribe((res) => {
-        console.log(res);
+        console.log(JSON.parse(res));
     });
   }
 }
