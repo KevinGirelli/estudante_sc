@@ -1,14 +1,18 @@
 package com.school.schoolSc.controller;
 
 import com.school.schoolSc.Entity.student;
+import com.school.schoolSc.services.EmailService;
 import com.school.schoolSc.services.TokenService;
 import com.school.schoolSc.repository.studentRepository;
+import com.school.schoolSc.services.impl.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.UUID;
 
 @Controller
 @CrossOrigin
@@ -23,6 +27,10 @@ public class studentResource {
 
   @Autowired
   studentRepository studentRepository;
+
+  @Autowired
+  EmailServiceImpl emailService;
+
 
   //pra retornar as paginas html pro cliente precisa fazer uma função do
   //tipo ModelAndView e instanciar um objeto dessa classe e passar o nome do arquivo html
@@ -40,6 +48,7 @@ public class studentResource {
     //insert do usuario
     data.setPassword(passwordEncoder.encode(data.getPassword()));
     studentRepository.save(data);
+    this.emailService.sendSimpleMailMessage(data.getFullName(),data.getEmail(), UUID.randomUUID().toString());
     return ResponseEntity.ok().build();
   }
 }

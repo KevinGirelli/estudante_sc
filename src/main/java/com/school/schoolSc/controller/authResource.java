@@ -4,10 +4,12 @@ import com.school.schoolSc.Entity.dto.loginDTO;
 import com.school.schoolSc.Entity.schools;
 import com.school.schoolSc.Entity.student;
 import com.school.schoolSc.Entity.teacher;
+import com.school.schoolSc.services.EmailService;
 import com.school.schoolSc.services.TokenService;
 import com.school.schoolSc.repository.schoolRepository;
 import com.school.schoolSc.repository.studentRepository;
 import com.school.schoolSc.repository.teacherRepository;
+import com.school.schoolSc.services.impl.EmailServiceImpl;
 import org.hibernate.boot.jaxb.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,10 +43,13 @@ public class authResource {
   @Autowired
   PasswordEncoder passwordEncoder;
 
-  @Value("${adminManagement.login}")
+  @Autowired
+  EmailServiceImpl emailService;
+
+  @Value("${admin.login}")
   private String adminLogin;
 
-  @Value("${adminManagement.password}")
+  @Value("${admin.password}")
   private String adminPassword;
 
   @PostMapping("/login-submit")
@@ -63,6 +68,7 @@ public class authResource {
       SecurityContextHolder.getContext().setAuthentication(authentication);
 
       String token = tokenService.GenerateToken(studentLogin);
+
       return ResponseEntity.ok().body(token);
     }
 
