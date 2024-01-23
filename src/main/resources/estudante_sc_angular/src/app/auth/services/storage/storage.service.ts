@@ -8,6 +8,9 @@ const USER = "user";
   providedIn: 'root'
 })
 export class StorageService {
+  static logout() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
 

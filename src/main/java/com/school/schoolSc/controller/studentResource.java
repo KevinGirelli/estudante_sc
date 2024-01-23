@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.UUID;
 
-@Controller
+@Controller 
 @CrossOrigin
 @RequestMapping("/student")
 public class studentResource {
