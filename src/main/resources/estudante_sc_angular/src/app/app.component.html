@@ -9,4 +9,61 @@
     </div>
   </nz-header>
 </div>
+
+<div *ngIf="isAdminLoggedIn">
+  <div>
+    <nz-header class="main-header" nz-row nzType="flex" class="navbar">
+      <div class="nav-tittle">
+        <a routerLink="/admin/dashboard"> LoggedIn Admin</a>
+      </div>
+      <div class="nav-links">
+        <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+      </div>
+    </nz-header>
+  </div>
+</div>
+
+<div *ngIf="isStudentLoggedIn">
+  <div>
+    <nz-header class="main-header" nz-row nzType="flex" class="navbar">
+      <div class="nav-tittle">
+        <a routerLink="/student/dashboard"> LoggedIn Aluno</a>
+      </div>
+      <div class="nav-links">
+        <a nz-button nzType="link" routerLink="/student/dashboard" routerLinkActive="active">Dashboard</a>
+        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+      </div>
+    </nz-header>
+  </div>
+</div>
+
+<div *ngIf="isSchoolLoggedIn">
+  <div>
+    <nz-header class="main-header" nz-row nzType="flex" class="navbar">
+      <div class="nav-tittle">
+        <a routerLink="/school/dashboard"> LoggedIn Escola</a>
+      </div>
+      <div class="nav-links">
+        <a nz-button nzType="link" routerLink="/school/dashboard" routerLinkActive="active">Dashboard</a>
+        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+      </div>
+    </nz-header>
+  </div>
+</div>
+
+<div *ngIf="isTeacherLoggedIn">
+  <div>
+    <nz-header class="main-header" nz-row nzType="flex" class="navbar">
+      <div class="nav-tittle">
+        <a routerLink="/teacher/dashboard"> LoggedIn Professor</a>
+      </div>
+      <div class="nav-links">
+        <a nz-button nzType="link" routerLink="/teacher/dashboard" routerLinkActive="active">Dashboard</a>
+        <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+      </div>
+    </nz-header>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
