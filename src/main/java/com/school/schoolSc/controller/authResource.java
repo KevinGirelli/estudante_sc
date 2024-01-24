@@ -1,10 +1,13 @@
 package com.school.schoolSc.controller;
 
+import com.school.schoolSc.Entity.activeCodes;
 import com.school.schoolSc.Entity.dto.loginDTO;
 import com.school.schoolSc.Entity.schools;
 import com.school.schoolSc.Entity.student;
 import com.school.schoolSc.Entity.teacher;
+import com.school.schoolSc.repository.activeCodesRepository;
 import com.school.schoolSc.services.EmailService;
+import com.school.schoolSc.services.RandomCodeService;
 import com.school.schoolSc.services.TokenService;
 import com.school.schoolSc.repository.schoolRepository;
 import com.school.schoolSc.repository.studentRepository;
@@ -20,9 +23,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/login")
@@ -46,30 +52,38 @@ public class authResource {
   @Autowired
   EmailServiceImpl emailService;
 
+  @Autowired
+  RandomCodeService randomCodeService;
+
+  @Autowired
+  activeCodesRepository  activeCodesRepository;
+
   @Value("${admin.login}")
   private String adminLogin;
 
   @Value("${admin.password}")
   private String adminPassword;
 
-  @PostMapping("/login-submit")
-  public ResponseEntity loginSubmit(@RequestBody loginDTO data){
+  @PostMapping("/login-request")
+  public ResponseEntity login_Request(@RequestBody loginDTO data){
     student studentLogin = this.studentRepository.findByEmail(data.email());
     teacher teacherLogin = this.teacherRepository.findByEmail(data.email());
     schools schoolLogin = this.schoolRepository.findByEmail(data.email());
 
-    System.out.println(adminLogin);
     if(data.email() == adminLogin && data.password() == adminPassword){
       return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
     if (studentLogin != null && studentLogin.getPassword() != null && passwordEncoder.matches(data.password(), studentLogin.getPassword()) == true) {
       Authentication authentication = new UsernamePasswordAuthenticationToken(studentLogin.getUsername(), studentLogin.getPassword(), studentLogin.getAuthorities());
-      SecurityContextHolder.getContext().setAuthentication(authentication);
 
-      String token = tokenService.GenerateToken(studentLogin);
+      activeCodes newCode = new activeCodes();
+      newCode.setCode(this.randomCodeService.GenerateLoginCode());
+      this.activeCodesRepository.save(newCode);
 
-      return ResponseEntity.ok().body(token);
+      this.emailService.sendSimpleMailMessage("Seu código de autenticação",
+              studentLogin.getEmail(), UUID.randomUUID().toString(),Integer.toString(newCode.getCode()));
+      return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     if (teacherLogin != null && teacherLogin.getPassword() != null && passwordEncoder.matches(data.password(), teacherLogin.getPassword()) == true) {
@@ -88,5 +102,10 @@ public class authResource {
       return ResponseEntity.ok().body(token);
     }
     return ResponseEntity.badRequest().body("Login not found, check your credentials");
+  }
+
+  @PostMapping("/login-submit")
+  public ResponseEntity loginSubmit(){
+    return ResponseEntity.badRequest().build();
   }
 }

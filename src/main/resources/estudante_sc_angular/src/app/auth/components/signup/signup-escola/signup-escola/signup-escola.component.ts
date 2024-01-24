@@ -33,7 +33,7 @@ export class SignupEscolaComponent implements OnInit{
 
   register() {
     console.log(this.signupForm.value);
-    this.authService.registerAluno(JSON.stringify(this.signupForm.value)).subscribe((res) => {
+    this.authService.registerEscola(JSON.stringify(this.signupForm.value)).subscribe((res) => {
       console.log(res);
       if (res != null) {
         this.message.success("Signup successful", { nzDuration: 5000 });

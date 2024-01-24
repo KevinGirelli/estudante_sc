@@ -24,14 +24,14 @@ export class AuthService {
     const httpOptions = {headers: new HttpHeaders({
       "Content-type": "application/json"
     })}
-    return this.http.post(BASE_URL+"professor url", signupProfessorRequest, httpOptions);
+    return this.http.post(BASE_URL+"/teacher/register-submit", signupProfessorRequest, httpOptions);
   }
 
   registerEscola(signupEscolaRequest: any): Observable<any> {
     const httpOptions = {headers: new HttpHeaders({
       "Content-type": "application/json"
     })}
-    return this.http.post(BASE_URL+"escola url", signupEscolaRequest, httpOptions);
+    return this.http.post(BASE_URL+"/school/register-submit", signupEscolaRequest, httpOptions);
   }
 
   login(loginRequest: String): Observable<any> {
@@ -39,6 +39,6 @@ export class AuthService {
       "Content-type": "application/json"
     })}
 
-    return this.http.post(BASE_URL+"/login/login-submit", loginRequest, httpOptions);
+    return this.http.post(BASE_URL+"/login/login-request", loginRequest, httpOptions);
   }
 }

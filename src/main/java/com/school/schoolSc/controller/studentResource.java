@@ -1,5 +1,6 @@
 package com.school.schoolSc.controller;
 
+import com.school.schoolSc.Entity.roles;
 import com.school.schoolSc.Entity.student;
 import com.school.schoolSc.services.EmailService;
 import com.school.schoolSc.services.TokenService;
@@ -43,12 +44,12 @@ public class studentResource {
   }
 
   @PostMapping("/register-submit")
-
   public ResponseEntity registerSubmit (@RequestBody student data){
     //insert do usuario
     data.setPassword(passwordEncoder.encode(data.getPassword()));
+    data.setRole(roles.STUDENT);
     studentRepository.save(data);
-    this.emailService.sendSimpleMailMessage(data.getFullName(),data.getEmail(), UUID.randomUUID().toString());
+    //fazer email de confirmação
     return ResponseEntity.ok().build();
   }
 }

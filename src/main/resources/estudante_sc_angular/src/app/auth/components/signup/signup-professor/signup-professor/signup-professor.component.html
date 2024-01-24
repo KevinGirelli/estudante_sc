@@ -11,7 +11,7 @@
           <form nz-form [formGroup]="signupForm">
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Name">
-                <input nz-input placeholder="Nome" id="nome" formControlName="nome">
+                <input nz-input placeholder="Nome" id="fullName" formControlName="fullName">
                 <ng-template #errorPass let-control>
                   <ng-container *ngIf="control.hasError('required')">
                     Is Required
@@ -39,7 +39,7 @@
   
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Date">
-                <input nz-input type="date" id="dataNasc" ngModel="selectedDate" formControlName="dataNasc">       
+                <input nz-input type="date" id="age" ngModel="selectedDate" formControlName="age">       
                 <ng-template #errorPass let-control>
                   <ng-container *ngIf="control.hasError('required')">
                     Is Required
@@ -65,7 +65,7 @@
   
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid State">
-                  <input nz-input placeholder="Estado" id="estado" formControlName="estado">
+                  <input nz-input placeholder="Estado" id="state" formControlName="state">
                   <ng-template #errorPass let-control>
                     <ng-container *ngIf="control.hasError('required')">
                       Is Required
@@ -76,7 +76,7 @@
   
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid City">
-                <input nz-input placeholder="Cidade" id="cidade" formControlName="cidade">
+                <input nz-input placeholder="Cidade" id="city" formControlName="city">
                 <ng-template #errorPass let-control>
                   <ng-container *ngIf="control.hasError('required')">
                     Is Required
@@ -87,7 +87,7 @@
   
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Cep">
-                <input nz-input placeholder="Cep" id="cep" formControlName="cep">
+                <input nz-input placeholder="Cep" id="zipCode" formControlName="zipCode">
                 <ng-template #errorPass let-control>
                   <ng-container *ngIf="control.hasError('required')">
                     Is Required
@@ -98,7 +98,7 @@
   
             <nz-form-item>
               <nz-form-control nzRequired nzHasFeedback nzErrorTip="The input is not valid Number">
-                <input nz-input placeholder="Número" id="numeroResidencial" formControlName="numeroResidencial">
+                <input nz-input placeholder="Número" id="number" formControlName="number">
                 <ng-template #errorPass let-control>
                   <ng-container *ngIf="control.hasError('required')">
                     Is Required
@@ -109,7 +109,7 @@
             
             <nz-form-item>
               <nz-form-control>
-                <input nz-input placeholder="Complemento" id="complemento" formControlName="complemento">
+                <input nz-input placeholder="Complemento" id="complement" formControlName="complement">
               </nz-form-control>
             </nz-form-item>
   

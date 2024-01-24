@@ -1,6 +1,7 @@
 package com.school.schoolSc.controller;
 
 
+import com.school.schoolSc.Entity.roles;
 import com.school.schoolSc.Entity.teacher;
 import com.school.schoolSc.services.TokenService;
 import com.school.schoolSc.repository.teacherRepository;
@@ -29,6 +30,7 @@ public class teacherResource {
   public ResponseEntity teacherRegister(@RequestBody teacher data){
     //insert do professor
       data.setPassword(passwordEncoder.encode(data.getPassword()));
+      data.setRole(roles.TEACHER);
       this.teacherRepository.save(data);
       return ResponseEntity.ok().build();
   }

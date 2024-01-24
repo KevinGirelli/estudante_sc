@@ -22,13 +22,13 @@ public class EmailServiceImpl implements EmailService {
   private JavaMailSender emailSender;
 
   @Override
-  public void sendSimpleMailMessage(String name, String to, String token) {
+  public void sendSimpleMailMessage(String name, String to, String token,String text) {
     try{
       SimpleMailMessage message = new SimpleMailMessage();
-      message.setSubject("NEW_USER_ACCOUNT_VERIFICATION");
+      message.setSubject(name);
       message.setFrom(fromEmail);
       message.setTo(to);
-      message.setText("Teste");
+      message.setText(text);
       emailSender.send(message);
     }catch (Exception erro){
       System.out.println(erro.getMessage());
